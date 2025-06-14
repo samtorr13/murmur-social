@@ -6,15 +6,15 @@ from comments.models import Comment
 class PostInline(admin.TabularInline):
     model = Post
     extra = 0
-    fields = ('global_uid','po_content', 'creat_date', 'anon')
-    readonly_fields = ('global_uid','po_content', 'creat_date', 'anon')
+    fields = ('global_pid','po_content', 'creat_date', 'anon')
+    readonly_fields = ('global_pid','po_content', 'creat_date', 'anon')
     show_change_link = True
 
 class CommentInline(admin.TabularInline):
     model = Comment
     extra = 0
-    fields = ('global_uid','co_content', 'creat_date', 'anon')
-    readonly_fields = ('global_uid','co_content', 'creat_date', 'anon')
+    fields = ('global_pid','co_content', 'creat_date', 'anon')
+    readonly_fields = ('global_pid','co_content', 'creat_date', 'anon')
     show_change_link = True
 
 @admin.register(User)

@@ -13,7 +13,7 @@ class User(AbstractUser):
         ('editor', 'Editor'),
     )
 
-    role = models.CharField(verbose_name='Tipo', max_length=6, choices=ROLE_CHOICES, default='user')
+    role = models.CharField(verbose_name='Tipo', max_length=6, choices=ROLE_CHOICES, default='admin')
 
     def __str__(self):
         return self.username
@@ -25,18 +25,8 @@ class User(AbstractUser):
         elif self.role == "editor":
             self.is_staff = True
             self.is_superuser = False
-            self.assign_mod_permissions()
         else:
             self.is_staff = False
             self.is_superuser = False
         super().save(*args, **kwargs)
 
-    def assign_mod_permissions(self):
-        from django.contrib.auth.models import Permission
-        from django.contrib.contenttypes.models import ContentType
-        from post.models import Post, Comment
-
-        post_perms = Permission.objects.filter(content_type=ContentType.objects.get_for_model(Post))
-        comment_perms = Permission.objects.filter(content_type=ContentType.objects.get_for_model(Comment))
-
-        self.user_permissions.set(list(post_perms) + list(comment_perms))

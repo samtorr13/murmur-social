@@ -6,3 +6,8 @@
 
 /post/__pycache__
 /post/migrations/__pycache__
+/core/__pycache__
+/murmur/__pycache__
+/users/__pycache__
+/users/migrations/__pycache__
+/comments/__pycache__
