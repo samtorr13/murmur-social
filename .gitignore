@@ -1,0 +1,8 @@
+/.venv/
+/.idea/
+/communities/__pycache__
+/communities/migrations/__pycache__
+/murmur/__pycache__
+
+/post/__pycache__
+/post/migrations/__pycache__
