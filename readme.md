@@ -7,9 +7,9 @@ Este proyecto tiene como objetivo ser fácil de instalar y permitir que cualquie
 
 ## 🚀 Características
 
-- Publicaciones de texto (por ahora sin imágenes)
-- Comentarios en forma de árbol (anidados)
-- Publicaciones anónimas (visibles para admins)
+- Publicaciones de texto 
+- Comentarios en forma de árbol 
+- Publicaciones anónimas 
 - Sistema de comunidades públicas
 - Roles de usuario: normales, moderadores y admins
 - Backend en Django
