@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'post',
     'communities',
     'comments',
-    'core', #utilidades que no encajan en una sola categoria
-    'users'
+    'core',
+    'users',
+    'reports',
+    'views'
+
+
 ]
 
 MIDDLEWARE = [

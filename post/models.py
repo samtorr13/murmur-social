@@ -9,6 +9,7 @@ class Post(models.Model):
     po_content = models.TextField(max_length=500, null=False, blank=False,verbose_name="post")
     creat_date = models.DateTimeField(auto_now_add=True)
     anon = models.BooleanField(default=False)
+    disabled = models.BooleanField(default=False)
     community = models.ForeignKey(
         'communities.Community',
         on_delete=models.SET_NULL,

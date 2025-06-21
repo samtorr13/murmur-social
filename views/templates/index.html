@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Django App</title>
+    {% load static %}
+    <link href="{% static 'css/output.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div class="flex gap-2">
+    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        </div>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <a class="justify-between">
+            Profile
+            <span class="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid gap-4 flex items-center justify-center">
+  {% for post in posts %}
+    <div class="card bg-base-200 p-4">
+      <p>{{ post.po_content }}</p>
+      <p class="text-sm text-gray-500">Publicado por: {{ post.author.username }}</p>
+        <button class=""
+    </div>
+  {% empty %}
+    <p>No hay publicaciones aún.</p>
+  {% endfor %}
+</div>
+
+
+
+<form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+  {% csrf_token %}
+</form>
+</body>
+</html>

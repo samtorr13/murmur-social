@@ -1,5 +1,8 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Permission
+
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -28,5 +31,24 @@ class User(AbstractUser):
         else:
             self.is_staff = False
             self.is_superuser = False
+
         super().save(*args, **kwargs)
+
+        if self.role != "editor":
+            self.user_permissions.clear()
+            return
+
+        modelos_a_permitir = ['post', 'comment', 'report']
+
+        for modelo in modelos_a_permitir:
+            try:
+                content_type = ContentType.objects.get(app_label='post', model=modelo)
+                perms = Permission.objects.filter(
+                    content_type=content_type,
+                    codename__in=[f'change_{modelo}', f'view_{modelo}', f'delete_{modelo}', f'add_{modelo}']
+                    )
+                for perm in perms:
+                    self.user_permissions.add(perm)
+            except ContentType.DoesNotExist:
+                continue
 

@@ -22,9 +22,8 @@ class Comment(models.Model):
         app_label = "post"
 
     def __str__(self):
-        resumen = self.co_content[:30] + ("..." if len(self.co_content) > 30 else "")
 
-        return f'post {self.global_pid} by UID {self.author}: {resumen}'
+        return f'comentario n° {self.global_pid}'
 
     def save(self, *args, **kwargs):
         if not self.global_pid_id:

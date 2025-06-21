@@ -11,3 +11,5 @@
 /users/__pycache__
 /users/migrations/__pycache__
 /comments/__pycache__
+*.pyc
+views/static/css/tailwindcss.exe

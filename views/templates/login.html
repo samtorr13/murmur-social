@@ -1,0 +1,40 @@
+{% load static %}
+{% load form_filters %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión</title>
+  <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="h-screen bg-base-200 flex items-center justify-center">
+
+  <div class="card w-full max-w-sm shadow-2xl bg-base-100">
+    <form method="post" class="card-body">
+      {% csrf_token %}
+      <h2 class="text-center text-2xl font-bold mb-4">Bienvenido a Murmur 🗨️</h2>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Usuario</span>
+        </label>
+        {{ form.username|add_class:"input input-bordered" }}
+      </div>
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Contraseña</span>
+        </label>
+        {{ form.password|add_class:"input input-bordered" }}
+      </div>
+
+      <div class="form-control mt-6">
+        <button class="btn btn-primary">Entrar</button>
+      </div>
+
+      <p class="text-center text-sm text-gray-500 mt-4">¿No tienes cuenta? </p>
+    </form>
+  </div>
+
+</body>
+</html>
